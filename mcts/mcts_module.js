@@ -38,7 +38,11 @@ export class Node {
   }
   expand() {
     //action = np.random.choice(np.where(self.expandable_moves == 1)[0])
-    let action = this.expandable_moves.findIndex((move) => move === 1);
+    //let action = this.expandable_moves.findIndex((move) => move === 1);
+    let action = Math.floor(Math.random() * this.expandable_moves.length);
+    while (this.expandable_moves[action] !== 1) {
+      action = Math.floor(Math.random() * this.expandable_moves.length);
+    }
     this.expandable_moves[action] = 0;
     let child_state = structuredClone(this.state);
     child_state = this.game.get_next_state(child_state, action, 1);
@@ -61,8 +65,16 @@ export class Node {
     while (true) {
       let valid_moves = this.game.get_valid_moves(rollout_state);
       //action = np.random.choice(np.where(valid_moves == 1)[0])
-      let action = valid_moves.findIndex((move) => move === 1);
-      rollout_state = this.game.get_next_state(rollout_state, action, rollout_player);
+      //let action = valid_moves.findIndex((move) => move === 1);
+      let action = Math.floor(Math.random() * valid_moves.length);
+      while (valid_moves[action] !== 1) {
+        action = Math.floor(Math.random() * valid_moves.length);
+      }
+      rollout_state = this.game.get_next_state(
+        rollout_state,
+        action,
+        rollout_player
+      );
       [value, is_terminal] = this.game.get_value_and_terminated(
         rollout_state,
         action
