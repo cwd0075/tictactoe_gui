@@ -40,7 +40,7 @@ export class Node {
     //action = np.random.choice(np.where(self.expandable_moves == 1)[0])
     let action = this.expandable_moves.findIndex((move) => move === 1);
     this.expandable_moves[action] = 0;
-    let child_state = this.state.slice();
+    let child_state = structuredClone(this.state);
     child_state = this.game.get_next_state(child_state, action, 1);
     child_state = this.game.change_perspective(child_state, -1);
     let child = new Node(this.game, this.args, child_state, this, action);
@@ -56,7 +56,7 @@ export class Node {
     if (is_terminal) {
       return value;
     }
-    let rollout_state = this.state.slice();
+    let rollout_state = structuredClone(this.state);
     let rollout_player = 1;
     while (true) {
       let valid_moves = this.game.get_valid_moves(rollout_state);
@@ -65,7 +65,8 @@ export class Node {
       rollout_state = this.game.get_next_state(rollout_state, action);
       [value, is_terminal] = this.game.get_value_and_terminated(
         rollout_state,
-        action
+        action,
+        rollout_player
       );
       if (is_terminal) {
         if (rollout_player === -1) {
