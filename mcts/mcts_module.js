@@ -62,11 +62,10 @@ export class Node {
       let valid_moves = this.game.get_valid_moves(rollout_state);
       //action = np.random.choice(np.where(valid_moves == 1)[0])
       let action = valid_moves.findIndex((move) => move === 1);
-      rollout_state = this.game.get_next_state(rollout_state, action);
+      rollout_state = this.game.get_next_state(rollout_state, action, rollout_player);
       [value, is_terminal] = this.game.get_value_and_terminated(
         rollout_state,
-        action,
-        rollout_player
+        action
       );
       if (is_terminal) {
         if (rollout_player === -1) {
