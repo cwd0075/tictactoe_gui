@@ -10,6 +10,7 @@ https://github.com/cwd0075/alphazero/blob/main/tictactoe_part1.py
 
 To run:  
 just run tictactoe.html on a local web server  
+I run on VS Code Live Server locally (see Note: Setup javascript development environment on Windows)   
 
 ### MCTS Folder:  
 tic tac toe, human play againts MCTS AI   
