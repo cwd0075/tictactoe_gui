@@ -20,3 +20,9 @@ https://github.com/cwd0075/alphazero/blob/main/mcts_part2.py
 
 ### MCTS_Debug Folder: 
 debug print node info in console.log  
+
+### AlphaMCTS_Onnx Folder:  
+tic tac toe, human play against MCTS with AlphaZero ML network onnx version  
+AlphaMCTS code is from:  
+https://github.com/cwd0075/alphazero/blob/main/alphamcts_part4.py  
+https://github.com/cwd0075/alphazero/blob/main/onnx_test.js  
