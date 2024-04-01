@@ -18,6 +18,8 @@ MCTS code is from:
 Alphazero from Scratch by freeCodeCamp  
 https://github.com/cwd0075/alphazero/blob/main/mcts_part2.py  
 
+### *** JSMCTS use args.["C"] = 1.0 and add Math.random()*1e-6 to ucb formula ***  
+
 ### MCTS_Debug Folder: 
 debug print node info in console.log  
 
