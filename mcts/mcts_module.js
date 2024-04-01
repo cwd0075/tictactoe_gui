@@ -102,10 +102,13 @@ export class MCTS {
   constructor(game, args) {
     this.game = game;
     this.args = args;
+    this.time = 0;
   }
   search(state) {
     let root = new Node(this.game, this.args, state);
+    this.time = 0;
     for (let search = 0; search < this.args["num_searches"]; search++) {
+      let time0 = Date.now();
       let node = root;
       while (node.is_fully_expanded()) {
         node = node.select();
@@ -120,6 +123,7 @@ export class MCTS {
         value = node.simulate();
       }
       node.backpropagate(value);
+      this.time += Date.now() - time0;
     }
     let action_probs = new Array(this.game.action_size).fill(0);
     for (let child of root.children) {
