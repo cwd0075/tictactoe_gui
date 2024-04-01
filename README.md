@@ -19,6 +19,9 @@ Alphazero from Scratch by freeCodeCamp
 https://github.com/cwd0075/alphazero/blob/main/mcts_part2.py  
 
 ### *** JSMCTS use args.["C"] = 1.0 and add Math.random()*1e-6 to ucb formula ***  
+avgGameDepth, how many game step from here to game including random playout  
+avgSearchDepth, search depth visited before random playout  
+(a / b): value sum of the node / total visit count  
 
 ### MCTS_Debug Folder: 
 debug print node info in console.log  
