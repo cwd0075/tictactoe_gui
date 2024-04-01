@@ -65,6 +65,7 @@ function aiTurn() {
   let neutral_state = tictactoe.change_perspective(state, player);
   let mcts_probs = mcts.search(neutral_state);
   console.log(mcts_probs);
+  console.log(mcts.time, " ms");
   //action = np.argmax(mcts_probs)
   let action = mcts_probs.indexOf(Math.max(...mcts_probs));
   document.getElementById(action).innerText = player;
